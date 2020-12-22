@@ -1,10 +1,13 @@
 <template>
-  <div>这是Cart页面</div>
+  <h2>购物车</h2>
 </template>
 
 <script>
-export default {}
+  export default {
+    name: "Cart"
+  }
 </script>
 
 <style scoped>
+
 </style>
