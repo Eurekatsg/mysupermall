@@ -93,6 +93,10 @@ export default {
   line-height: 60px;
 }
 
+.info-service-item {
+  white-space: nowrap;
+}
+
 .info-service-item img {
   width: 14px;
   height: 14px;
