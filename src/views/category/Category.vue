@@ -60,10 +60,14 @@ export default {
 </script>
 
 <style scoped>
+.category {
+  height: 100vh;
+}
+
 .content {
+  height: calc(100% - 44px - 49px);
   display: flex;
   flex-direction: row;
-  overflow: hidden;
 }
 
 .aside {

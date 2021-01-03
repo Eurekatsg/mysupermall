@@ -1,24 +1,36 @@
 <template>
   <div class="cate-main">
-    <div class="main-class">
-      <div class="class-item" v-for="(item, index) in showList" :key="index">
-        <img :src="item.image" alt="" />
-        <span>{{ item.title }}</span>
+    <scroll class="content" ref="scroll">
+      <div class="main-class">
+        <div class="class-item" v-for="(item, index) in showList" :key="index">
+          <img :src="item.image" alt="" @load="isLoad" />
+          <span>{{ item.title }}</span>
+        </div>
       </div>
-    </div>
+    </scroll>
   </div>
 </template>
 
 <script>
+import Scroll from 'components/common/scroll/Scroll'
+
 import { getSubCategory } from 'network/category'
 
 export default {
   name: 'CategoryMain',
+  components: {
+    Scroll,
+  },
   data() {
     return {
       currentMaitKey: null,
       showList: [],
+      lengthCounter: 0,
+      mapList: null,
     }
+  },
+  created() {
+    this.mapList = new Map()
   },
   methods: {
     async getSubCategory(maitKey) {
@@ -27,11 +39,30 @@ export default {
       console.log('请求一次')
       this.showList = resSub.data.list
     },
+    // 刷新 scrolly
+    isLoad() {
+      this.lengthCounter++
+      if (this.lengthCounter == this.showList.length) {
+        this.$refs.scroll.refresh()
+        console.log('刷新了刷新了')
+        this.lengthCounter = 0
+      }
+    },
   },
 }
 </script>
 
 <style scoped lang='less'>
+.cate-main {
+  height: 100%;
+  // overflow: hidden;
+}
+
+.content {
+  height: 100%;
+  overflow: hidden;
+}
+
 .main-class {
   display: flex;
   flex-flow: wrap;

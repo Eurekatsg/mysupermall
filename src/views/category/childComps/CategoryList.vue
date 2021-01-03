@@ -1,13 +1,15 @@
 <template>
   <div class="list-aside">
-    <div
-      class="list-item"
-      v-for="(item, index) in list"
-      :key="index"
-      :class="{ active: currentIndex == index }"
-      @click="itemClick(index)"
-    >
-      <div class="title">{{ item.title }}</div>
+    <div class="list">
+      <div
+        class="list-item"
+        v-for="(item, index) in list"
+        :key="index"
+        :class="{ active: currentIndex == index }"
+        @click="itemClick(index)"
+      >
+        <div class="title">{{ item.title }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,10 +41,16 @@ export default {
 
 <style scoped lang='less'>
 .list-aside {
-  width: 100px;
-  height: calc(100vh - 44px - 49px);
+  // width: 100/375 * 100%;
   overflow: scroll;
+  // height: calc(100% - 44px);
+}
+// 隐藏滚动条
+.list-aside::-webkit-scrollbar {
+  display: none; //个人建议使用这个
+}
 
+.list {
   flex-shrink: 0;
 
   display: flex;
