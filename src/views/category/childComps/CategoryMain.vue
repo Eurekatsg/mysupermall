@@ -1,11 +1,9 @@
 <template>
   <div class="cate-main">
-    <div>
-      <div class="main-class">
-        <div class="class-item" v-for="(item, index) in showList" :key="index">
-          <img :src="item.image" alt="" />
-          <span>{{ item.title }}</span>
-        </div>
+    <div class="main-class">
+      <div class="class-item" v-for="(item, index) in showList" :key="index">
+        <img :src="item.image" alt="" />
+        <span>{{ item.title }}</span>
       </div>
     </div>
   </div>

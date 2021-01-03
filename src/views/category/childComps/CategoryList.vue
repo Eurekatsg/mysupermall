@@ -7,7 +7,7 @@
       :class="{ active: currentIndex == index }"
       @click="itemClick(index)"
     >
-      <span>{{ item.title }}</span>
+      <div class="title">{{ item.title }}</div>
     </div>
   </div>
 </template>
@@ -40,8 +40,8 @@ export default {
 <style scoped lang='less'>
 .list-aside {
   width: 100px;
-  height: calc(100% - 44px - 49px);
-  overflow: hidden;
+  height: calc(100vh - 44px - 49px);
+  overflow: scroll;
 
   flex-shrink: 0;
 
@@ -70,10 +70,12 @@ export default {
 
   font-size: 15px;
 
-  span {
+  .title {
     position: relative;
+    left: 0;
     padding: 0 5px;
     // transition: left 1s;
+    transition: 0.5s left;
   }
 }
 
@@ -81,11 +83,12 @@ export default {
   background-color: #fff;
   border-left: 4px solid var(--color-tint);
 
-  span {
+  .title {
     color: var(--color-tint);
     font-size: 16px;
-
     font-weight: bold;
+    position: relative;
+    left: 8px;
   }
 }
 </style>

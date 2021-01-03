@@ -7,6 +7,9 @@
       </div>
     </nav-bar>
 
+    <!-- 测试css动画 -->
+    <csss-anim />
+
     <!-- 商品列表 -->
     <cart-list />
 
@@ -19,6 +22,7 @@
 import NavBar from 'components/common/navbar/NavBar'
 import CartList from './childComps/CartList'
 import ChartBottomBar from './childComps/CartBottomBar'
+import CsssAnim from './childComps/CsssAnim'
 
 import { mapGetters } from 'vuex'
 
@@ -28,6 +32,8 @@ export default {
     NavBar,
     CartList,
     ChartBottomBar,
+
+    CsssAnim,
   },
   computed: {
     ...mapGetters({ length: 'cartLength' }),
