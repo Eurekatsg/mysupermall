@@ -1,33 +1,59 @@
 <template>
-  <div class="wrapper">
-    <div class="left"></div>
-    <div class="right"></div>
+  <div class="profile">
+    <!-- 导航页 -->
+    <nav-bar class="nav-bar">
+      <div slot="center">我的</div>
+    </nav-bar>
+    <scroll class="content">
+      <!-- 头像区 -->
+      <user-bar />
+      <!-- 金额区 -->
+      <order-bar />
+
+      <!-- 消息区 -->
+      <option-bar />
+
+      <!-- app区 -->
+      <apply-bar />
+    </scroll>
   </div>
 </template>
 
 <script>
+import NavBar from 'components/common/navbar/NavBar'
+import UserBar from './childComps/UserBar'
+import OrderBar from './childComps/OrderBar'
+import OptionBar from './childComps/OpitionBar'
+import ApplyBar from './childComps/ApplyBar'
+
+import Scroll from 'components/common/scroll/Scroll'
+
 export default {
   name: 'Profile',
-  components: {},
+  components: {
+    NavBar,
+    UserBar,
+    OrderBar,
+    OptionBar,
+    ApplyBar,
+
+    Scroll,
+  },
 }
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  height: 1000px;
+.profile {
+  height: 100vh;
 }
 
-.left {
-  flex-shrink: 0;
-  width: calc(60%);
-  background-color: red;
+.content {
+  height: calc(100% - 44px - 49px);
 }
 
-.right {
-  flex: 1 1 0%;
-  width: 100%;
-  background-color: blue;
+.nav-bar {
+  background-color: var(--color-tint);
+  color: #fff;
+  font-weight: bold;
 }
 </style>
