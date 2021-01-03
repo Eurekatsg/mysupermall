@@ -30,21 +30,32 @@ export default {
     }
   },
   created() {
+    // 定义map类型的数据
     this.mapList = new Map()
+  },
+  watch: {
+    currentMaitKey(oldVal, newVal) {
+      this.showList = this.mapList.get(newVal)
+    },
   },
   methods: {
     async getSubCategory(maitKey) {
+      this.currentMaitKey = maitKey
+      // 判断 是否已经有请求过
+      if (this.mapList.get(maitKey)) return console.log('已有数据')
+
       const resSub = await getSubCategory(maitKey)
       if (resSub.success !== true) return console.log('获取分类详细数据失败') //获取失败的方法
       console.log('请求一次')
       this.showList = resSub.data.list
+      this.mapList.set(maitKey, resSub.data.list)
     },
     // 刷新 scrolly
     isLoad() {
       this.lengthCounter++
       if (this.lengthCounter == this.showList.length) {
         this.$refs.scroll.refresh()
-        console.log('刷新了刷新了')
+        // console.log('刷新了刷新了')
         this.lengthCounter = 0
       }
     },

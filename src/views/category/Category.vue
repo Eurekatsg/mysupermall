@@ -40,7 +40,7 @@ export default {
   methods: {
     tableClick(index) {
       this.currentIndex = index
-      console.log(this.list[index].maitKey)
+      // console.log(this.list[index].maitKey)
       this.$refs.main.getSubCategory(this.list[index].maitKey)
     },
 
